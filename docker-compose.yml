@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+
+  car_api:
+    build:
+      context: ./car_api
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - ENV_VAR_NAME=VALUE
+
+  car_frontend:
+    build:
+      context: ./car_frontend
+      dockerfile: Dockerfile
+    ports:
+      - 8501:8501
+    depends_on:
+      - car_api
